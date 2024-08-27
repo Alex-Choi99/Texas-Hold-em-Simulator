@@ -1,0 +1,139 @@
+<!-- wizard.ejs -->
+    <% console.log('hasSession: '+hasSession) %>
+    <% console.log('wizardStatus: '+wizardStatus) %>
+    <% if (hasSession) { %>
+        <div class="my-1">
+            <p class="h1">Hello, <%= name %> </p>
+        </div>
+        <div class="my-3">
+            <form action="/texas-holdem" method="get">
+                <button class="btn btn-outline-info">Texax Hold'em</button>
+            </form>
+        </div>
+        <div class="my-3">
+            <form action="/profile" method="get">
+                <button class="btn btn-outline-info">Profile</button>
+            </form>
+        </div>
+        <div class="my-3">
+            <form action="/signOut" method="post">
+                <button class="btn btn-outline-primary">Logout</button>
+            </form>
+        </div>
+    <% } else if(wizardStatus == 'base') { %>
+        <div id="accountWizard" class="d-flex flex-column justify-content-center align-items-center wizard h-15 w-15">
+            <div class="my-3">
+                <button type="button" id="signUpBtn" class="btn btn-outline-success btn-lg">Sign up</button>
+            </div>
+            <div class="my-3">
+                <button type="button" id="signInBtn" class="btn btn-outline-info btn-lg">Sign in</button>
+            </div>
+        </div>
+        
+        <!-- SignUp Form -->
+        <div id="signUpWizard" class="d-flex flex-column justify-content-center align-items-center wizard">
+            <div id="errorMsg" class="alert alert-danger d-none">a<%= errorMsg %></div>
+            <button id="backBtn" class="btn btn-primary m-2">back</button>
+            <form action="/signUpSubmit" method="post" class="m-2 bg-white">
+                <h1 class="h3 mb-1 fw-normal">Sign Up</h1>
+                
+                <!-- Name -->
+                <div class="form-floating">
+                    <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Name" min="2" max="30">
+                    <label for="floatingInput">Name *</label>
+                    <span></span>
+                </div>
+        
+                <!-- Login ID -->
+                <div class="form-floating">
+                    <input name="userID" type="text" class="form-control" id="floatingInput" placeholder="User ID" min="2" max="30">
+                    <label for="floatingInput">User ID *</label>
+                </div>
+        
+                <!-- Email Address -->
+                <div class="form-floating">
+                    <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email address" min="7" max="50">
+                    <label for="floatingInput">Email address *</label>
+                </div>
+        
+                <!-- Password -->
+                <div class="form-floating">
+                    <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" min="6" max="50">
+                    <label for="floatingPassword">Password *</label>
+                </div>
+                <br>
+        
+                <!-- Submit Button -->
+                <button class="btn btn-primary w-100 py-2" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- SignIn Form -->
+         <div id="signInWizard" class="d-flex flex-column justify-content-center align-items-center wizard">
+            <div id="errorMsg" class="alert alert-danger d-none">a<%= errorMsg %></div>
+            <button id="backBtn" class="btn btn-primary m-2">back</button>
+            
+            <form action="/signinSubmit" method="post" class="m-2 bg-white">
+                <h1 class="h3 mb-1 fw-normal">Sign In</h1>
+                
+                <!-- Login ID -->
+                <div class="form-floating">
+                    <input name="userID" type="text" class="form-control" id="floatingInput" placeholder="User ID" min="2" max="30">
+                    <label for="floatingInput">User ID *</label>
+                </div>
+        
+                <!-- Password -->
+                <div class="form-floating">
+                    <input name="password" type="password" class="form-control" id="floatingPassword" placeholder=" password" min="6" max="30">
+                    <label for="floatingPassword">Password *</label>
+                    <span></span>
+                    <a href="#" class="float-end">Forgot Password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="btn btn-primary w-100 py-2" type="submit">Sign In</button>
+            </form>
+         </div>
+
+    <% } else if(wizardStatus == 'signUp') { %>
+        <!-- Signup Form -->
+        <div id="signUpWizard">
+            <div id="errorMsg" class="alert alert-danger d-none">a<%= errorMsg %></div>
+            <button id="backBtn" class="btn btn-primary m-2">back</button>
+            
+            <form action="/signupSubmit" method="post" class="m-2 bg-white">
+                <h1 class="h3 mb-1 fw-normal">Sign Up</h1>
+                
+                <!-- Name -->
+                <div class="form-floating">
+                    <input name="name" type="text" class="form-control" id="floatingInput" placeholder="Name" min="2" max="30">
+                    <label for="floatingInput">Name *</label>
+                    <span></span>
+                </div>
+        
+                <!-- Login ID -->
+                <div class="form-floating">
+                    <input name="userID" type="text" class="form-control" id="floatingInput" placeholder="User ID" min="2" max="30">
+                    <label for="floatingInput">User ID *</label>
+                </div>
+        
+                <!-- Email Address -->
+                <div class="form-floating">
+                    <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email address" min="7" max="50">
+                    <label for="floatingInput">Email address *</label>
+                </div>
+        
+                <!-- Password -->
+                <div class="form-floating">
+                    <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" min="6" max="50">
+                    <label for="floatingPassword">Password *</label>
+                </div>
+                <br>
+        
+                <!-- Submit Button -->
+                <button class="btn btn-primary w-100 py-2" type="submit">Submit</button>
+            </form>
+        </div>
+    <% } else if(wizardStatus == 'signIn') { %>
+
+    <% } %>
